@@ -24,3 +24,7 @@ development, debugging, and deployment.
 - **Debugging & Development Tools**
   - IDE Debugger: [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [Visual Studio Code](https://code.visualstudio.com/)
   - Application logs for runtime debugging
+
+## WorkFlow Details
+
+- **Solo Developer**
