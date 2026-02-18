@@ -2,3 +2,5 @@
 Java and Spring Boot
 
 ![CI](https://github.com/Alex-Ramirez-BSU/CS408-FullStack/actions/workflows/ci.yml/badge.svg)
+
+Reference: https://github.com/shanep/fullstack-starter
