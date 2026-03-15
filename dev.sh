@@ -153,7 +153,7 @@ cmd_open_web() {
 
 cmd_clean() {
   rm -rf ./data/
-  (cd app && npm run clean)
+  docker compose down --rmi local --volumes --remove-orphans || true
 }
 
 cmd_nuke() {
@@ -188,7 +188,7 @@ cmd_nuke() {
   rm -rf ./data/
 
   # Clean app directory
-  (cd app && npm run clean 2>/dev/null || true)
+  # (cd app && npm run clean 2>/dev/null || true)
 
   echo "✔ Nuke complete. Everything removed."
   echo ""
