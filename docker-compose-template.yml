@@ -1,24 +1,16 @@
 services:
   app:
-    image: __DOCKER_USERNAME__/__APP_NAME__:__APP_VERSION__
     build:
-      context: ./app
-      dockerfile: Dockerfile
-    container_name: express-app
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: springboot-app
     restart: unless-stopped
-    environment:
-      - PORT=3000
-      - NODE_ENV=production
-      - INSIDE_DOCKER=true
-    volumes:
-      - ./data:/app/data
     networks:
       - app-network
     expose:
-      - "3000"
+      - "8080"
 
   nginx:
-    image: __DOCKER_USERNAME__/__APP_NAME__-nginx:__APP_VERSION__
     build:
       context: ./nginx
       dockerfile: Dockerfile
