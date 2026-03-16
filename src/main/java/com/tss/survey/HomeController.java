@@ -10,8 +10,29 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("title", "Hello World");
-        model.addAttribute("message", "This is a template with bootstrap.");
+        model.addAttribute("title", "Trail Tracker");
+        model.addAttribute("message", "This is the homepage.");
+        return "index";
+    }
+
+    @RequestMapping("/trails")
+    public String Trails(Model model){
+        model.addAttribute("title", "Trails Explored");
+        model.addAttribute("message", "This is the trails list page.");
+        return "index";
+    }
+
+    @RequestMapping("/add")
+    public String addTrail(Model model){
+        model.addAttribute("title", "Add Trail");
+        model.addAttribute("message", "This is where you add trails.");
+        return "index";
+    }
+
+    @RequestMapping("/stats")
+    public String stats(Model model){
+        model.addAttribute("title", "Trail Stats");
+        model.addAttribute("message", "This is the stats list page.");
         return "index";
     }
 }
