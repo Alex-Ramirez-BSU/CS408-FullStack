@@ -16,7 +16,7 @@ class HomeControllerTest {
         String viewName = controller.index(model);
 
         assertEquals("index", viewName);
-        assertEquals("Hello World", model.getAttribute("title"));
-        assertEquals("This is a template with bootstrap.", model.getAttribute("message"));
+        assertEquals("Trail Tracker", model.getAttribute("title"));
+        assertEquals("This is the homepage.", model.getAttribute("message"));
     }
 }
