@@ -36,3 +36,7 @@ build/
 docker-compose.yml
 app/data/
 app/node_modules/
+
+# H2 database files
+/data/*.mv.db
+/data/*.trace.db
