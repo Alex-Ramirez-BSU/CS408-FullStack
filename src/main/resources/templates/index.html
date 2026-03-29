@@ -4,38 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Template</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
 </head>
 <body>
-<!-- Navbar full-width -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <!-- Brand stays left -->
-        <a class="navbar-brand" href="/">MyApp</a>
-
-        <!-- Toggler for mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Nav items pushed to the right -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/trails">Trail List</a></li>
-                <li class="nav-item"><a class="nav-link" href="/add">Add</a></li>
-                <li class="nav-item"><a class="nav-link" href="/stats">Stats</a></li>
-            </ul>
-        </div>
-    </div>
+<!-- Navbar -->
+<nav>
+    <a href="/">MyApp</a>
+    <a href="/trails">Trail List</a>
+    <a href="/add">Add</a>
+    <a href="/stats">Stats</a>
 </nav>
 
-<!-- Page content centered with Bootstrap container -->
-<div class="container mt-4">
+<!-- Page content -->
+<div>
     <h1 th:text="${title}"></h1>
     <p th:text="${message}"></p>
 </div>
 
-<script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+<!-- Footer -->
+<footer>
+    <p>This is Changes I made</p>
+</footer>
 </body>
 </html>
