@@ -61,4 +61,18 @@ public class Trail {
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
 
+    @Override
+    public String toString() {
+        return "Trail{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                ", distance=" + distance +
+                ", rating=" + rating +
+                ", notes='" + notes + '\'' +
+                '}';
+    }
 }
