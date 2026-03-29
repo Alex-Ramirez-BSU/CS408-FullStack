@@ -3,7 +3,7 @@ FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Copy the entire project root
-COPY .. .
+COPY . .
 
 # Make mvnw executable
 RUN chmod +x ./mvnw
