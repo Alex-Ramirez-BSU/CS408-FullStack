@@ -1,8 +1,12 @@
 package com.tss.survey;
 
+import com.tss.survey.repository.TrailRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -34,5 +38,14 @@ public class HomeController {
         model.addAttribute("title", "Trail Stats");
         model.addAttribute("message", "This is the stats list page.");
         return "index";
+    }
+
+    @Autowired
+    private TrailRepository trailRepository;
+
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() {
+        return trailRepository.findAll().toString();
     }
 }
