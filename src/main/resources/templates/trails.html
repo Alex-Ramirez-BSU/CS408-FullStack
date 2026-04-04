@@ -24,12 +24,36 @@
 <!-- Page content -->
 <div>
     <h1 th:text="${title}"></h1>
-    <p th:text="${message}"></p>
+    <!-- List Of Trails -->
+    <ul>
+        <li th:each="trail : ${trails}">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${trail.name}"></h5>
+                    <p class="card-text">
+                        <span th:text="${trail.city}"></span>,
+                        <span th:text="${trail.state}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Distance:</strong><span th:text="${trail.distance}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Difficulty:</strong><span th:text="${trail.difficulty}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Rating:</strong><span th:text="${trail.rating}"></span>
+                    </p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
 
 <!-- Footer -->
 <footer>
-    <p>This is Changes I made</p>
+    <p>This is the footer atm</p>
 </footer>
 </body>
 <script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>

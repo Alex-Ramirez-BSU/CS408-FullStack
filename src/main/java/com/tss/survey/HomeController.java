@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
+    //Repository Initialized
+    @Autowired
+    private TrailRepository trailRepository;
+
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("title", "Trail Tracker");
@@ -22,7 +26,7 @@ public class HomeController {
     @RequestMapping("/trails")
     public String Trails(Model model){
         model.addAttribute("title", "Trails Explored");
-        model.addAttribute("message", "This is the trails list page.");
+        model.addAttribute("trails", trailRepository.findAll());
         return "trails";
     }
 
@@ -40,12 +44,9 @@ public class HomeController {
         return "index";
     }
 
-    @Autowired
-    private TrailRepository trailRepository;
-
-    @GetMapping("/test")
-    @ResponseBody
-    public String test() {
-        return trailRepository.findAll().toString();
-    }
+//    @GetMapping("/test")
+//    @ResponseBody
+//    public String test() {
+//        return trailRepository.findAll().toString();
+//    }
 }
