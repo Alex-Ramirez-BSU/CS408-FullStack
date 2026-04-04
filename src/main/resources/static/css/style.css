@@ -1,0 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: blueviolet; /* or your color */
+    /* OR if using an image: */
+    /* background-image: url('/images/bg.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

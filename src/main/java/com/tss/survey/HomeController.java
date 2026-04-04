@@ -23,7 +23,7 @@ public class HomeController {
     public String Trails(Model model){
         model.addAttribute("title", "Trails Explored");
         model.addAttribute("message", "This is the trails list page.");
-        return "index";
+        return "trails";
     }
 
     @RequestMapping("/add")
