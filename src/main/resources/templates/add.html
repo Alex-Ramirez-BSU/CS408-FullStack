@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Template</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- Navbar -->
+<nav>
+    <a href="/">Home</a>
+    <a href="/trails">Trails</a>
+    <a href="/add">Add</a>
+    <a href="/stats">Stats</a>
+</nav>
+<!-- Page Content -->
+<div>
+    <h1 th:text="${title}"></h1>
+    <p th:text="${message}"></p>
+</div>
+<!-- From Content-->
+<form action="/add-item" method="post">
+    <label for="name">Trail Name:</label>
+    <input type="text" id="name" name="name" placeholder="Grand Canyon National Park" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" placeholder="Grand Canyon Village" required>
+
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" placeholder="Arizona | AZ">
+
+    <label for="difficulty">Difficulty: </label>
+    <select id="difficulty" name="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+
+    <label for="distance">Distance: </label>
+    <input type="number" id="distance" name="distance" min="0" placeholder="in miles" required>
+
+    <label for="rating">Rating: </label>
+    <select id="rating" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <label for="notes">Notes: </label>
+    <textarea id="notes" name="notes"></textarea>
+
+    <button type="reset">Reset</button>
+    <button type="submit">Add Item</button>
+</form>
+
+<!-- Footer -->
+<footer>
+    <p>This is Changes I made</p>
+</footer>
+<script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

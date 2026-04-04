@@ -34,7 +34,7 @@ public class HomeController {
     public String addTrail(Model model){
         model.addAttribute("title", "Add Trail");
         model.addAttribute("message", "This is where you add trails.");
-        return "index";
+        return "add";
     }
 
     @RequestMapping("/stats")
