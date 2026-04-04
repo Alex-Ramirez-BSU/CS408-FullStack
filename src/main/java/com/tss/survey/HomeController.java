@@ -4,11 +4,8 @@ import com.tss.survey.model.Trail;
 import com.tss.survey.repository.TrailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -30,6 +27,14 @@ public class HomeController {
         model.addAttribute("title", "Trails Explored");
         model.addAttribute("trails", trailRepository.findAll());
         return "trails";
+    }
+
+    @GetMapping("/trails/{id}")
+    public String Trail(@PathVariable("id") int id, Model model){
+        Trail trail = trailRepository.findById(id).orElse(null);
+        model.addAttribute("title", "Trail Explored");
+        model.addAttribute("trail", trail);
+        return "details";
     }
 
     @GetMapping("/add")

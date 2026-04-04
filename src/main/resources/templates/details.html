@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trails Page</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Trails</a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/trails">Trails</a>
+            <a class="nav-link" href="/add">Add</a>
+            <a class="nav-link" href="/stats">Stats</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Page content -->
+<div>
+    <h1 th:text="${title}"></h1>
+    <!-- List Of Trails -->
+        <div class="card text-center">
+            <div class="card-header">
+                Trail
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${trail.name}"></h5>
+                <p class="card-text">
+                    <span th:text="${trail.city}"></span>,
+                    <span th:text="${trail.state}"></span>
+                </p>
+                <p class="card-text">
+                    <strong>Distance: </strong><span th:text="${trail.distance}"></span>
+                </p>
+                <p class="card-text">
+                    <strong>Difficulty: </strong><span th:text="${trail.difficulty}"></span>
+                </p>
+                <p class="card-text">
+                    <strong>Rating:</strong>
+                    <span th:each="i : ${#numbers.sequence(1, 5)}"
+                          th:text="${i <= trail.rating} ? '★' : '☆'"></span>
+                </p>
+                <button type="reset">Edit</button>
+                <button type="submit">Save</button>
+                <button type="delete">Delete</button>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>This is the footer atm</p>
+</footer>
+</body>
+<script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+</html>
