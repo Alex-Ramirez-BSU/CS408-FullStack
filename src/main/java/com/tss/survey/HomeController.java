@@ -1,9 +1,11 @@
 package com.tss.survey;
 
+import com.tss.survey.model.Trail;
 import com.tss.survey.repository.TrailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,6 +37,12 @@ public class HomeController {
         model.addAttribute("title", "Add Trail");
         model.addAttribute("message", "This is where you add trails.");
         return "add";
+    }
+
+    @PostMapping("/add-trail")
+    public String addTrail(Trail trail){
+        trailRepository.save(trail);
+        return "redirect:/trails";
     }
 
     @RequestMapping("/stats")

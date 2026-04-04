@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Template</title>
+    <title>Add Trail</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -20,7 +20,7 @@
     <p th:text="${message}"></p>
 </div>
 <!-- From Content-->
-<form action="/add-item" method="post">
+<form action="/add-trail" method="post">
     <label for="name">Trail Name:</label>
     <input type="text" id="name" name="name" placeholder="Grand Canyon National Park" required>
 
