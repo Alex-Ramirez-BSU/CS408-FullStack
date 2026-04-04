@@ -11,3 +11,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.navbar {
+    background-color: grey;
+}
