@@ -18,21 +18,21 @@ public class HomeController {
     @Autowired
     private TrailRepository trailRepository;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index(Model model){
         model.addAttribute("title", "Trail Tracker");
         model.addAttribute("message", "This is the homepage.");
         return "index";
     }
 
-    @RequestMapping("/trails")
+    @GetMapping("/trails")
     public String Trails(Model model){
         model.addAttribute("title", "Trails Explored");
         model.addAttribute("trails", trailRepository.findAll());
         return "trails";
     }
 
-    @RequestMapping("/add")
+    @GetMapping("/add")
     public String addTrail(Model model){
         model.addAttribute("title", "Add Trail");
         model.addAttribute("message", "This is where you add trails.");
@@ -45,7 +45,7 @@ public class HomeController {
         return "redirect:/trails";
     }
 
-    @RequestMapping("/stats")
+    @GetMapping("/stats")
     public String stats(Model model){
         model.addAttribute("title", "Trail Stats");
         model.addAttribute("message", "This is the stats list page.");
