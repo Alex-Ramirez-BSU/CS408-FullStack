@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: blueviolet; /* or your color */
+    background-color: darkolivegreen; /* or your color */
     /* OR if using an image: */
     /* background-image: url('/images/bg.jpg'); */
     background-size: cover;
@@ -14,6 +14,10 @@ body {
 
 .navbar {
     background-color: grey;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
 }
 
 .ul-card {

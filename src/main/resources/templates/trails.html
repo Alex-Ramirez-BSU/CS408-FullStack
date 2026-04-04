@@ -44,7 +44,9 @@
                         <strong>Difficulty: </strong><span th:text="${trail.difficulty}"></span>
                     </p>
                     <p class="card-text">
-                        <strong>Rating: </strong><span th:text="${trail.rating}"></span>
+                        <strong>Rating:</strong>
+                        <span th:each="i : ${#numbers.sequence(1, 5)}"
+                              th:text="${i <= trail.rating} ? '★' : '☆'"></span>
                     </p>
                     <a href="#" class="btn btn-primary">Details</a>
                 </div>

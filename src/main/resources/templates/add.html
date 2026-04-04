@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Trail</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <!-- Navbar -->
-<nav>
-    <a href="/">Home</a>
-    <a href="/trails">Trails</a>
-    <a href="/add">Add</a>
-    <a href="/stats">Stats</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Trails</a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/trails">Trails</a>
+            <a class="nav-link" href="/add">Add</a>
+            <a class="nav-link" href="/stats">Stats</a>
+        </div>
+    </div>
 </nav>
 <!-- Page Content -->
 <div>
@@ -41,10 +47,11 @@
     </select>
 
     <label for="distance">Distance: </label>
-    <input type="number" id="distance" name="distance" min="0" placeholder="in miles" required>
+    <input type="number" step="0.01" id="distance" name="distance" min="0" placeholder="in miles" required>
 
     <label for="rating">Rating: </label>
     <select id="rating" name="rating">
+        <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
