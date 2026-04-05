@@ -48,7 +48,7 @@
                         <span th:each="i : ${#numbers.sequence(1, 5)}"
                               th:text="${i <= trail.rating} ? '★' : '☆'"></span>
                     </p>
-                    <a th:href="@{/trails/{id}(id=${trail.id})}" class="btn btn-primary">Details</a>
+                    <a th:href="@{/trails/{id}(id=${trail.id})}" class="btn btn-success">Details</a>
                 </div>
                 <div class="card-footer text-muted">
                     2 days ago

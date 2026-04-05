@@ -1,10 +1,17 @@
+
+/* Color Pallet? */
+/*Ethereal Ivory #E4E4DE*/
+/*Sophisticated Sage #C4C5BA*/
+/*Eerie Black #1B1B1B*/
+/*Muted Moss #595f39*/
+
 html, body {
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0;
 }
 
 body {
-    background-color: darkolivegreen; /* or your color */
+    background-color: #595f39; /* or your color */
     /* OR if using an image: */
     /* background-image: url('/images/bg.jpg'); */
     background-size: cover;
@@ -13,11 +20,10 @@ body {
 }
 
 .navbar {
-    background-color: grey;
+    background-color: #C4C5BA;
     position: sticky;
     top: 0;
     z-index: 1000;
-
 }
 
 .ul-card {

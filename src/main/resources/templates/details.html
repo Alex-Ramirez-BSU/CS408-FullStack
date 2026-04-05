@@ -32,14 +32,21 @@
             <div class="card-body">
                 <h5 class="card-title" th:text="${trail.name}"></h5>
                 <p class="card-text">
+                    <strong>Location: </strong>
                     <span th:text="${trail.city}"></span>,
                     <span th:text="${trail.state}"></span>
+                </p>
+                <p class="card-text">
+                    <strong>Date: </strong><span th:text="${trail.date}"></span>
                 </p>
                 <p class="card-text">
                     <strong>Distance: </strong><span th:text="${trail.distance}"></span>
                 </p>
                 <p class="card-text">
                     <strong>Difficulty: </strong><span th:text="${trail.difficulty}"></span>
+                </p>
+                <p class="card-text">
+                    <strong>Notes: </strong><span th:text="${trail.notes}"></span>
                 </p>
                 <p class="card-text">
                     <strong>Rating:</strong>
