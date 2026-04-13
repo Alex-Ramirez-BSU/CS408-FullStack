@@ -26,7 +26,8 @@
     <p th:text="${message}"></p>
 </div>
 <!-- From Content-->
-<form action="@{/add-trail}" th:object="${trail}" method="post">
+<form th:action="@{/add-trail}" th:object="${trail}" method="post">
+    <input type="hidden" th:field="*{id}">
     <label for="name">Trail Name:</label>
     <input type="text" id="name" th:field="*{name}" placeholder="Grand Canyon National Park" required>
 

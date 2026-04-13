@@ -54,7 +54,7 @@ public class HomeController {
     }
 
     @PostMapping("/add-trail")
-    public String addTrail(Trail trail){
+    public String addTrail(@ModelAttribute Trail trail){
         trailRepository.save(trail);
         return "redirect:/trails";
     }
