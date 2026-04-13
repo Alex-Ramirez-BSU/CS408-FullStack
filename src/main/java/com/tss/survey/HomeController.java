@@ -37,10 +37,19 @@ public class HomeController {
         return "details";
     }
 
+    @GetMapping("/trails/edit/{id}")
+    public String editTrail(@PathVariable("id") int id, Model model){
+        Trail trail = trailRepository.findById(id).orElse(null);
+        model.addAttribute("title", "Edit Trail");
+        model.addAttribute("trail", trail);
+        return "add";
+    }
+
     @GetMapping("/add")
     public String addTrail(Model model){
         model.addAttribute("title", "Add Trail");
         model.addAttribute("message", "This is where you add trails.");
+        model.addAttribute("trail", new Trail());
         return "add";
     }
 

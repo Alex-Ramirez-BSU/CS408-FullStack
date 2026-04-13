@@ -53,7 +53,7 @@
                     <span th:each="i : ${#numbers.sequence(1, 5)}"
                           th:text="${i <= trail.rating} ? '★' : '☆'"></span>
                 </p>
-                <button type="reset">Edit</button>
+                <a th:href="@{/trails/edit/{id}(id=${trail.id})}" class="btn btn-warning">Edit</a>
                 <button type="submit">Save</button>
                 <button type="delete">Delete</button>
             </div>
