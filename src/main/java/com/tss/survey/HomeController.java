@@ -45,6 +45,12 @@ public class HomeController {
         return "add";
     }
 
+    @PostMapping("/trails/delete/{id}")
+    public String deleteTrail(@PathVariable("id") int id) {
+        trailRepository.deleteById(id);
+        return "redirect:/trails";
+    }
+
     @GetMapping("/add")
     public String addTrail(Model model){
         model.addAttribute("title", "Add Trail");

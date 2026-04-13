@@ -2,6 +2,7 @@ package com.tss.survey.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name ="trails")
@@ -12,6 +13,7 @@ public class Trail {
     private int id;
 
     private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private String city;
     private String state;
