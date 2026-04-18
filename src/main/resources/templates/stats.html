@@ -6,7 +6,7 @@
     <title>My Template</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script th:src="@{/webjars/chart.js/4.4.0/dist/chart.umd.js}"></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -110,7 +110,7 @@
 <footer>
     <p>This is Changes I made</p>
 </footer>
-<script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
 <script th:inline="javascript">
     const trailsPerMonth = [[${trailsPerMonth}]];
 
@@ -129,7 +129,10 @@
             labels: monthLabels,
             datasets: [{
                 label: 'Number of Trails',
-                data: trailsPerMonth
+                data: trailsPerMonth,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
             }]
         },
         options: {
@@ -155,7 +158,18 @@
         data: {
             labels: ['Easy', 'Medium', 'Hard'],
             datasets: [{
-                data: [easyTrails, mediumTrails, hardTrails]
+                data: [easyTrails, mediumTrails, hardTrails],
+                backgroundColor: [
+                    'rgba(167, 201, 87, 1)',
+                    'rgba(106, 153, 78, 1)',
+                    'rgba(56, 102, 65, 1)',
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1,
             }]
         },
         options: {
