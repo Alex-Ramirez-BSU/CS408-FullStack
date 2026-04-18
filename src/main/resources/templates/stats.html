@@ -24,7 +24,66 @@
 <!-- Page content -->
 <div>
     <h1 th:text="${title}"></h1>
-    <p th:each="trail : ${trails}">
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Trail Statistics</h1>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Total Trails</h5>
+                    <p class="display-6" th:text="${totalTrails}">0</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Total Distance</h5>
+                    <p class="display-6">
+                        <span th:text="${#numbers.formatDecimal(totalDistance, 1, 2)}">0.00</span> mi
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Average Rating</h5>
+                    <p class="display-6" th:text="${#numbers.formatDecimal(averageRating, 1, 1)}">0.0</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Easy Trails</h5>
+                    <p class="display-6" th:text="${easyTrails}">0</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Medium Trails</h5>
+                    <p class="display-6" th:text="${mediumTrails}">0</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Hard Trails</h5>
+                    <p class="display-6" th:text="${hardTrails}">0</p>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card shadow-sm text-center p-3">
+                    <h5>Longest Trail</h5>
+                    <p class="display-6">
+                        <span th:text="${#numbers.formatDecimal(longestTrail, 1, 2)}">0.00</span> mi
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->

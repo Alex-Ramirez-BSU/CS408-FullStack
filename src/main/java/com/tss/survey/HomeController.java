@@ -81,6 +81,15 @@ public class HomeController {
         int hardTrails = (int) trails.stream().filter(t -> "Hard".equalsIgnoreCase(t.getDifficulty())).count();
         double longestTrail = trails.stream().mapToDouble(Trail::getDistance).max().orElse(0.0);
 
+        int[] trailsPerMonth = new int[12];
+
+        for (Trail trail : trails) {
+            if (trail.getDate() != null) {
+                int monthIndex = trail.getDate().getMonthValue() -1;
+                trailsPerMonth[monthIndex]++;
+            }
+        }
+
         // Adding Attributes
         model.addAttribute("title", "Trail Stats");
         model.addAttribute("totalTrails", totalTrails);
