@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 
 @Controller
 public class HomeController {
@@ -67,8 +69,28 @@ public class HomeController {
 
     @GetMapping("/stats")
     public String stats(Model model){
+        // Loading Repo
+        List<Trail> trails = trailRepository.findAll();
+
+        // Stats
+        long totalTrails = trailRepository.count();
+        double totalDistance = trails.stream().mapToDouble(Trail::getDistance).sum();
+        double averageRating =  trails.stream().mapToDouble(Trail::getRating).average().orElse(0.0);
+        int easyTrails = (int) trails.stream().filter(t -> "Easy".equalsIgnoreCase(t.getDifficulty())).count();
+        int mediumTrails = (int)trails.stream().filter(t -> "Medium".equalsIgnoreCase(t.getDifficulty())).count();
+        int hardTrails = (int) trails.stream().filter(t -> "Hard".equalsIgnoreCase(t.getDifficulty())).count();
+        double longestTrail = trails.stream().mapToDouble(Trail::getDistance).max().orElse(0.0);
+
+        // Adding Attributes
         model.addAttribute("title", "Trail Stats");
-        model.addAttribute("message", "This is the stats list page.");
+        model.addAttribute("totalTrails", totalTrails);
+        model.addAttribute("totalDistance", totalDistance);
+        model.addAttribute("averageRating", averageRating);
+        model.addAttribute("easyTrails", easyTrails);
+        model.addAttribute("mediumTrails", mediumTrails);
+        model.addAttribute("hardTrails", hardTrails);
+        model.addAttribute("longestTrail", longestTrail);
+
         return "stats";
     }
 
