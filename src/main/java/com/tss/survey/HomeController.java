@@ -69,7 +69,7 @@ public class HomeController {
     public String stats(Model model){
         model.addAttribute("title", "Trail Stats");
         model.addAttribute("message", "This is the stats list page.");
-        return "index";
+        return "stats";
     }
 
 //    @GetMapping("/test")
