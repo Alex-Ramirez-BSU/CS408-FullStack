@@ -6,6 +6,7 @@
     <title>My Template</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -84,6 +85,25 @@
 
         </div>
     </div>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Trail Charts</h2>
+
+        <div class="row">
+            <div class="col-md-8 mb-4">
+                <div class="card p-4 shadow-sm">
+                    <h4 class="text-center">Trails Per Month</h4>
+                    <canvas id="monthlyTrailsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card p-4 shadow-sm">
+                    <h4 class="text-center">Difficulty Breakdown</h4>
+                    <canvas id="difficultyPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
@@ -91,5 +111,57 @@
     <p>This is Changes I made</p>
 </footer>
 <script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+<script th:inline="javascript">
+    const trailsPerMonth = [[${trailsPerMonth}]];
+
+    const easyTrails = [[${easyTrails}]];
+    const mediumTrails = [[${mediumTrails}]];
+    const hardTrails = [[${hardTrails}]];
+
+    const monthLabels = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    new Chart(document.getElementById('monthlyTrailsChart'), {
+        type: 'bar',
+        data: {
+            labels: monthLabels,
+            datasets: [{
+                label: 'Number of Trails',
+                data: trailsPerMonth
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('difficultyPieChart'), {
+        type: 'pie',
+        data: {
+            labels: ['Easy', 'Medium', 'Hard'],
+            datasets: [{
+                data: [easyTrails, mediumTrails, hardTrails]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
 </body>
 </html>

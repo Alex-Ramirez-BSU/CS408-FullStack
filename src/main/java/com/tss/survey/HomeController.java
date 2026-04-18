@@ -99,6 +99,7 @@ public class HomeController {
         model.addAttribute("mediumTrails", mediumTrails);
         model.addAttribute("hardTrails", hardTrails);
         model.addAttribute("longestTrail", longestTrail);
+        model.addAttribute("trailsPerMonth", trailsPerMonth);
 
         return "stats";
     }
