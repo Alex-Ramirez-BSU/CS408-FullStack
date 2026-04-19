@@ -25,9 +25,26 @@ public class HomeController {
     }
 
     @GetMapping("/trails")
-    public String Trails(Model model){
+    public String Trails(
+            @RequestParam(required = false) String difficulty,
+            @RequestParam(required = false) Integer rating,
+            @RequestParam(required = false) String name,
+            Model model) {
+
+        List<Trail> trails = trailRepository.findAll().stream()
+                .filter(t -> difficulty == null || difficulty.isBlank()
+                        || difficulty.equalsIgnoreCase(t.getDifficulty()))
+                .filter(t -> rating == null || t.getRating() == rating)
+                .filter(t -> name == null || name.isBlank()
+                        || t.getName().toLowerCase().contains(name.toLowerCase()))
+                .toList();
+
         model.addAttribute("title", "Trails Explored");
-        model.addAttribute("trails", trailRepository.findAll());
+        model.addAttribute("trails", trails);
+        model.addAttribute("difficulty", difficulty);
+        model.addAttribute("rating", rating);
+        model.addAttribute("name", name);
+
         return "trails";
     }
 

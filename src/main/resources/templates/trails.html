@@ -22,41 +22,98 @@
 </nav>
 
 <!-- Page content -->
-<div>
-    <h1 th:text="${title}"></h1>
-    <!-- List Of Trails -->
-    <ul class="ul-card">
-        <li th:each="trail : ${trails}">
-            <div class="card text-center">
+<div class="container mt-4">
+    <h1 th:text="${title}">Trails</h1>
+
+    <!-- 🔍 FILTER FORM -->
+    <form method="get" action="/trails" class="row g-3 mb-4">
+
+        <!-- Name search -->
+        <div class="col-md-3">
+            <label class="form-label">Search Name</label>
+            <input type="text" name="name"
+                   class="form-control"
+                   placeholder="Trail name..."
+                   th:value="${name}">
+        </div>
+
+        <!-- Difficulty -->
+        <div class="col-md-3">
+            <label class="form-label">Difficulty</label>
+            <select name="difficulty" class="form-select">
+                <option value="">All</option>
+                <option value="Easy" th:selected="${difficulty == 'Easy'}">Easy</option>
+                <option value="Medium" th:selected="${difficulty == 'Medium'}">Medium</option>
+                <option value="Hard" th:selected="${difficulty == 'Hard'}">Hard</option>
+            </select>
+        </div>
+
+        <!-- Rating -->
+        <div class="col-md-3">
+            <label class="form-label">Rating</label>
+            <select name="rating" class="form-select">
+                <option value="">Any</option>
+                <option value="0" th:selected="${rating == 0}">0 stars</option>
+                <option value="1" th:selected="${rating == 1}">1 Star</option>
+                <option value="2" th:selected="${rating == 2}">2 Stars</option>
+                <option value="3" th:selected="${rating == 3}">3 Stars</option>
+                <option value="4" th:selected="${rating == 4}">4 Stars</option>
+                <option value="5" th:selected="${rating == 5}">5 Stars</option>
+            </select>
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-md-3 d-flex align-items-end gap-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+            <a href="/trails" class="btn btn-secondary w-100">Clear</a>
+        </div>
+
+    </form>
+
+    <!-- TRAIL CARDS -->
+    <div class="row g-4">
+        <div class="col-md-4" th:each="trail : ${trails}">
+            <div class="card text-center h-100 shadow-sm">
+
                 <div class="card-header">
                     Trail
                 </div>
+
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${trail.name}"></h5>
-                    <p class="card-text">
-                        <span th:text="${trail.city}"></span>,
-                        <span th:text="${trail.state}"></span>
+                    <h5 class="card-title" th:text="${trail.name}">Trail Name</h5>
+
+                    <p>
+                        <span th:text="${trail.city}">City</span>,
+                        <span th:text="${trail.state}">State</span>
                     </p>
-                    <p class="card-text">
-                        <strong>Distance: </strong><span th:text="${trail.distance}"></span>
+
+                    <p>
+                        <strong>Distance:</strong>
+                        <span th:text="${trail.distance}">0</span> mi
                     </p>
-                    <p class="card-text">
-                        <strong>Difficulty: </strong><span th:text="${trail.difficulty}"></span>
+
+                    <p>
+                        <strong>Difficulty:</strong>
+                        <span th:text="${trail.difficulty}">Easy</span>
                     </p>
-                    <p class="card-text">
+
+                    <p>
                         <strong>Rating:</strong>
-                        <span th:each="i : ${#numbers.sequence(1, 5)}"
+                        <span th:each="i : ${#numbers.sequence(1,5)}"
                               th:text="${i <= trail.rating} ? '★' : '☆'"></span>
                     </p>
-                    <a th:href="@{/trails/{id}(id=${trail.id})}" class="btn btn-success">Details</a>
+
+                    <a th:href="@{/trails/{id}(id=${trail.id})}"
+                       class="btn btn-success">Details</a>
                 </div>
+
                 <div class="card-footer text-muted">
-                    2 days ago
+                    Trail Entry
                 </div>
+
             </div>
-            <
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
