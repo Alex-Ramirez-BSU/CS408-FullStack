@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Controller
@@ -34,7 +35,7 @@ public class HomeController {
         List<Trail> trails = trailRepository.findAll().stream()
                 .filter(t -> difficulty == null || difficulty.isBlank()
                         || difficulty.equalsIgnoreCase(t.getDifficulty()))
-                .filter(t -> rating == null || t.getRating() == rating)
+                .filter(t -> rating == null || Objects.equals(t.getRating(), rating))
                 .filter(t -> name == null || name.isBlank()
                         || t.getName().toLowerCase().contains(name.toLowerCase()))
                 .toList();
