@@ -22,61 +22,89 @@
 </nav>
 
 <!-- Page content -->
-<div>
-    <h1 th:text="${title}"></h1>
-    <!-- List Of Trails -->
-        <div class="card text-center">
-            <div class="card-header">
-                Trail
+<main>
+    <div>
+        <h1 th:text="${title}"></h1>
+        <!-- List Of Trails -->
+            <div class="card text-center">
+                <div class="card-header">
+                    Trail
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${trail.name}"></h5>
+                    <p class="card-text">
+                        <strong>Location: </strong>
+                        <span th:text="${trail.city}"></span>,
+                        <span th:text="${trail.state}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Date: </strong><span th:text="${trail.date}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Distance: </strong><span th:text="${trail.distance}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Difficulty: </strong><span th:text="${trail.difficulty}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Notes: </strong><span th:text="${trail.notes}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Rating:</strong>
+                        <span th:each="i : ${#numbers.sequence(1, 5)}"
+                              th:text="${i <= trail.rating} ? '★' : '☆'"></span>
+                    </p>
+                    <a th:href="@{/trails/edit/{id}(id=${trail.id})}" class="btn btn-warning">Edit</a>
+                    <form th:action="@{/trails/delete/{id}(id=${trail.id})}" method="post"
+                          onsubmit="return confirm('Are you sure you want to delete this trail?');">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title" th:text="${trail.name}"></h5>
-                <p class="card-text">
-                    <strong>Location: </strong>
-                    <span th:text="${trail.city}"></span>,
-                    <span th:text="${trail.state}"></span>
-                </p>
-                <p class="card-text">
-                    <strong>Date: </strong><span th:text="${trail.date}"></span>
-                </p>
-                <p class="card-text">
-                    <strong>Distance: </strong><span th:text="${trail.distance}"></span>
-                </p>
-                <p class="card-text">
-                    <strong>Difficulty: </strong><span th:text="${trail.difficulty}"></span>
-                </p>
-                <p class="card-text">
-                    <strong>Notes: </strong><span th:text="${trail.notes}"></span>
-                </p>
-                <p class="card-text">
-                    <strong>Rating:</strong>
-                    <span th:each="i : ${#numbers.sequence(1, 5)}"
-                          th:text="${i <= trail.rating} ? '★' : '☆'"></span>
-                </p>
-                <a th:href="@{/trails/edit/{id}(id=${trail.id})}" class="btn btn-warning">Edit</a>
-                <form th:action="@{/trails/delete/{id}(id=${trail.id})}" method="post"
-                      onsubmit="return confirm('Are you sure you want to delete this trail?');">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
-        </div>
-</div>
-
-<!-- Footer -->
+    </div>
+</main>
 <!-- Footer -->
 <footer style="background-color:#222; color:white; padding:20px 0; margin-top:40px;">
-    <div style="text-align:center;">
-        <p>&copy; 2026 Trail Tracker. All rights reserved.</p>
-        <p>Alex Ramirez-Robles</p>
-        <p>
-            <a href="/" style="color:#ccc; margin:0 10px;">Home</a> |
-            <a href="/trails" style="color:#ccc; margin:0 10px;">Trails</a> |
-            <a href="/add" style="color:#ccc; margin:0 10px;">Add Trail</a> |
-            <a href="/stats" style="color:#ccc; margin:0 10px;">Stats</a>
-        </p>
+    <div class="container">
+        <div class="row text-center text-md-start">
+
+            <!-- Info -->
+            <div class="col-md-6 mb-3">
+                <p><strong>Project Context</strong></p>
+                <p>&copy; 2026 Trail Tracker. All rights reserved.</p>
+                <p>CS408 Full Stack Web Development</p>
+                <p>Created By: Alex Ramirez-Robles</p>
+            </div>
+
+            <!-- Links -->
+            <div class="col-md-6 mb-3">
+                <p><strong>Related Links</strong></p>
+                <p>
+                    <a href="https://github.com/Alex-Ramirez-BSU/CS408-FullStack" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                        <img class="footer-img" src="../images/github_logo.png" alt="GitHub Repository">
+                        GitHub
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.boisestate.edu" target="_blank" rel="noopener noreferrer" title="Boise State University">
+                        <img class="footer-img" src="../images/bsu_b_logo.png" alt="Boise State University">
+                        Boise State University
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Bottom Nav -->
+        <div class="footer-bottom d-flex justify-content-center flex-wrap gap-3 pt-3 mt-3 border-top">
+            <a href="/">Home</a> |
+            <a href="/trails">Trails</a> |
+            <a href="/add">Add</a> |
+            <a href="/stats">Stats</a>
+        </div>
     </div>
 </footer>
 </body>

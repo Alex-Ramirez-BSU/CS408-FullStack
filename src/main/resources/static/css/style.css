@@ -11,12 +11,18 @@ html, body {
 }
 
 body {
-    background-color: #595f39; /* or your color */
+    background-color: #595f39;
     /* OR if using an image: */
     /* background-image: url('/images/bg.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 .navbar {
@@ -29,4 +35,26 @@ body {
 .ul-card {
     list-style-type: none;
     margin: 20px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+    flex-shrink: 0;
+}
+
+/* Image sizing */
+.footer-img {
+    width: 30px;
+    margin: 0 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
 }

@@ -23,101 +23,129 @@
 </nav>
 
 <!-- Page content -->
-<div>
-    <h1 th:text="${title}"></h1>
-    <div class="container mt-4">
-        <h1 class="mb-4 text-center">Trail Statistics</h1>
+<main>
+    <div>
+        <h1 th:text="${title}"></h1>
+        <div class="container mt-4">
+            <h1 class="mb-4 text-center">Trail Statistics</h1>
 
-        <div class="row g-4">
+            <div class="row g-4">
 
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Total Trails</h5>
-                    <p class="display-6" th:text="${totalTrails}">0</p>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Total Trails</h5>
+                        <p class="display-6" th:text="${totalTrails}">0</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Total Distance</h5>
-                    <p class="display-6">
-                        <span th:text="${#numbers.formatDecimal(totalDistance, 1, 2)}">0.00</span> mi
-                    </p>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Total Distance</h5>
+                        <p class="display-6">
+                            <span th:text="${#numbers.formatDecimal(totalDistance, 1, 2)}">0.00</span> mi
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Average Rating</h5>
-                    <p class="display-6" th:text="${#numbers.formatDecimal(averageRating, 1, 1)}">0.0</p>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Average Rating</h5>
+                        <p class="display-6" th:text="${#numbers.formatDecimal(averageRating, 1, 1)}">0.0</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Easy Trails</h5>
-                    <p class="display-6" th:text="${easyTrails}">0</p>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Easy Trails</h5>
+                        <p class="display-6" th:text="${easyTrails}">0</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Medium Trails</h5>
-                    <p class="display-6" th:text="${mediumTrails}">0</p>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Medium Trails</h5>
+                        <p class="display-6" th:text="${mediumTrails}">0</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Hard Trails</h5>
-                    <p class="display-6" th:text="${hardTrails}">0</p>
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Hard Trails</h5>
+                        <p class="display-6" th:text="${hardTrails}">0</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-12">
-                <div class="card shadow-sm text-center p-3">
-                    <h5>Longest Trail</h5>
-                    <p class="display-6">
-                        <span th:text="${#numbers.formatDecimal(longestTrail, 1, 2)}">0.00</span> mi
-                    </p>
+                <div class="col-md-12">
+                    <div class="card shadow-sm text-center p-3">
+                        <h5>Longest Trail</h5>
+                        <p class="display-6">
+                            <span th:text="${#numbers.formatDecimal(longestTrail, 1, 2)}">0.00</span> mi
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-        </div>
-    </div>
-    <div class="container mt-5">
-        <h2 class="mb-4 text-center">Trail Charts</h2>
-
-        <div class="row">
-            <div class="col-md-8 mb-4">
-                <div class="card p-4 shadow-sm">
-                    <h4 class="text-center">Trails Per Month</h4>
-                    <canvas id="monthlyTrailsChart"></canvas>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="card p-4 shadow-sm">
-                    <h4 class="text-center">Difficulty Breakdown</h4>
-                    <canvas id="difficultyPieChart"></canvas>
-                </div>
             </div>
         </div>
-    </div>
-</div>
+        <div class="container mt-5">
+            <h2 class="mb-4 text-center">Trail Charts</h2>
 
-<!-- Footer -->
+            <div class="row">
+                <div class="col-md-8 mb-4">
+                    <div class="card p-4 shadow-sm">
+                        <h4 class="text-center">Trails Per Month</h4>
+                        <canvas id="monthlyTrailsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card p-4 shadow-sm">
+                        <h4 class="text-center">Difficulty Breakdown</h4>
+                        <canvas id="difficultyPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 <!-- Footer -->
 <footer style="background-color:#222; color:white; padding:20px 0; margin-top:40px;">
-    <div style="text-align:center;">
-        <p>&copy; 2026 Trail Tracker. All rights reserved.</p>
-        <p>Alex Ramirez-Robles</p>
-        <p>
-            <a href="/" style="color:#ccc; margin:0 10px;">Home</a> |
-            <a href="/trails" style="color:#ccc; margin:0 10px;">Trails</a> |
-            <a href="/add" style="color:#ccc; margin:0 10px;">Add Trail</a> |
-            <a href="/stats" style="color:#ccc; margin:0 10px;">Stats</a>
-        </p>
+    <div class="container">
+        <div class="row text-center text-md-start">
+
+            <!-- Info -->
+            <div class="col-md-6 mb-3">
+                <p><strong>Project Context</strong></p>
+                <p>&copy; 2026 Trail Tracker. All rights reserved.</p>
+                <p>CS408 Full Stack Web Development</p>
+                <p>Created By: Alex Ramirez-Robles</p>
+            </div>
+
+            <!-- Links -->
+            <div class="col-md-6 mb-3">
+                <p><strong>Related Links</strong></p>
+                <p>
+                    <a href="https://github.com/Alex-Ramirez-BSU/CS408-FullStack" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                        <img class="footer-img" src="../images/github_logo.png" alt="GitHub Repository">
+                        GitHub
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.boisestate.edu" target="_blank" rel="noopener noreferrer" title="Boise State University">
+                        <img class="footer-img" src="../images/bsu_b_logo.png" alt="Boise State University">
+                        Boise State University
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Bottom Nav -->
+        <div class="footer-bottom d-flex justify-content-center flex-wrap gap-3 pt-3 mt-3 border-top">
+            <a href="/">Home</a> |
+            <a href="/trails">Trails</a> |
+            <a href="/add">Add</a> |
+            <a href="/stats">Stats</a>
+        </div>
     </div>
 </footer>
 <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
