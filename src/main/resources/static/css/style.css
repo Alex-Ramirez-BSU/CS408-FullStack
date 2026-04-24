@@ -26,10 +26,24 @@ main {
 }
 
 .navbar {
-    background-color: #C4C5BA;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.navbar-logo {
+    max-height: 100px;
+    width: auto;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.5rem;   /* bigger text */
+    padding: 10px 15px;  /* more clickable space */
 }
 
 .ul-card {
@@ -51,10 +65,22 @@ footer {
     margin: 0 10px;
 }
 
+.footer-logo {
+    width: 250px;
+    margin: 0 10px;
+}
+
 .footer-bottom {
     text-align: center;
 }
 
+.footer-bottom a {
+    color: white;
+}
+
+.footer-bottom a:hover {
+    color: #777;
+}
 footer a {
     text-decoration: none;
 }
