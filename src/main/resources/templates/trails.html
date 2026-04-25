@@ -27,14 +27,15 @@
 <!-- Page content -->
 <main>
     <div class="container mt-4">
-        <h1 th:text="${title}">Trails</h1>
+        <h1 class="explored-header" th:text="${title}">Trails</h1>
+        <hr>
 
         <!-- 🔍 FILTER FORM -->
         <form method="get" action="/trails" class="row g-3 mb-4">
 
             <!-- Name search -->
             <div class="col-md-3">
-                <label class="form-label">Search Name</label>
+                <label class="form-label explored-header">Search Name</label>
                 <input type="text" name="name"
                        class="form-control"
                        placeholder="Trail name..."
@@ -43,7 +44,7 @@
 
             <!-- Difficulty -->
             <div class="col-md-3">
-                <label class="form-label">Difficulty</label>
+                <label class="form-label explored-header">Difficulty</label>
                 <select name="difficulty" class="form-select">
                     <option value="">All</option>
                     <option value="Easy" th:selected="${difficulty == 'Easy'}">Easy</option>
@@ -54,16 +55,16 @@
 
             <!-- Rating -->
             <div class="col-md-3">
-                <label class="form-label">Rating</label>
-                <select name="rating" class="form-select">
-                    <option value="">Any</option>
-                    <option value="0" th:selected="${rating == 0}">0 stars</option>
-                    <option value="1" th:selected="${rating == 1}">1 Star</option>
-                    <option value="2" th:selected="${rating == 2}">2 Stars</option>
-                    <option value="3" th:selected="${rating == 3}">3 Stars</option>
-                    <option value="4" th:selected="${rating == 4}">4 Stars</option>
-                    <option value="5" th:selected="${rating == 5}">5 Stars</option>
-                </select>
+                <label class="form-label explored-header">Rating</label>
+                    <select name="rating" class="form-select">
+                        <option value="">Any</option>
+                        <option value="0" th:selected="${rating == 0}">0 stars</option>
+                        <option value="1" th:selected="${rating == 1}">1 Star</option>
+                        <option value="2" th:selected="${rating == 2}">2 Stars</option>
+                        <option value="3" th:selected="${rating == 3}">3 Stars</option>
+                        <option value="4" th:selected="${rating == 4}">4 Stars</option>
+                        <option value="5" th:selected="${rating == 5}">5 Stars</option>
+                    </select>
             </div>
 
             <!-- Buttons -->
@@ -112,9 +113,12 @@
                     </div>
 
                     <div class="card-footer text-muted">
-                        Trail Entry
+                        <span th:with="daysAgo=${T(java.time.temporal.ChronoUnit).DAYS.between(trail.date, T(java.time.LocalDate).now())}">
+                            <span th:if="${daysAgo == 0}">Explored today</span>
+                            <span th:if="${daysAgo == 1}">Explored yesterday</span>
+                            <span th:if="${daysAgo > 1}" th:text="'Explored ' + ${daysAgo} + ' days ago'"></span>
+                        </span>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -126,7 +130,7 @@
         <div class="row text-center text-md-start footer-bottom">
 
             <div class="col-md-4 mb-3">
-                <img class="footer-logo" src="/images/logo/tt_logo_expanded.png">
+                <img class="footer-logo" src="/images/logo/tt_logo_expanded.png" alt="Trail Tracker Logo">
             </div>
 
             <!-- Info -->

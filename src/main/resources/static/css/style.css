@@ -4,9 +4,15 @@
 /*Eerie Black #1B1B1B*/
 /*Muted Moss #595f39*/
 
+/*--- HTML ---*/
 html, body {
     min-height: 100vh;
     margin: 0;
+}
+
+/*--- Headers ---*/
+.explored-header {
+    color: #EAD7B7;
 }
 
 /*--- Body ---*/
@@ -66,6 +72,10 @@ main {
 .ul-card {
     list-style-type: none;
     margin: 20px;
+}
+
+.d-none {
+    display: none !important;
 }
 
 /*--- Footer ---*/
