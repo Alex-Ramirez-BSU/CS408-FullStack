@@ -28,9 +28,10 @@
 <!-- Page content -->
 <main>
     <div>
-        <h1 th:text="${title}"></h1>
+
         <div class="container mt-4">
-            <h1 class="mb-4 text-center">Trail Statistics</h1>
+            <h1 class="stats-header" th:text="${title}"></h1>
+            <hr>
 
             <div class="row g-4">
 
@@ -90,7 +91,8 @@
             </div>
         </div>
         <div class="container mt-5">
-            <h2 class="mb-4 text-center">Trail Charts</h2>
+            <h2 class="mb-4 stats-header">Chart Breakdown</h2>
+            <hr>
 
             <div class="row">
                 <div class="col-md-8 mb-4">
@@ -175,9 +177,20 @@
             datasets: [{
                 label: 'Number of Trails',
                 data: trailsPerMonth,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1,
+                backgroundColor: [
+                    '#90CAF9', // Jan (winter)
+                    '#64B5F6',
+                    '#4FC3F7',
+                    '#81C784', // spring
+                    '#66BB6A',
+                    '#4CAF50',
+                    '#FFB74D', // summer
+                    '#FFA726',
+                    '#FF8A65',
+                    '#BA68C8', // fall
+                    '#9575CD',
+                    '#7986CB'
+                ],
             }]
         },
         options: {
@@ -205,14 +218,14 @@
             datasets: [{
                 data: [easyTrails, mediumTrails, hardTrails],
                 backgroundColor: [
-                    'rgba(167, 201, 87, 1)',
-                    'rgba(106, 153, 78, 1)',
-                    'rgba(56, 102, 65, 1)',
+                    '#4CAF50',   /* olive green */
+                    '#2196F3',   /* sandy tan */
+                    '#212121'   /* trail brown */
                 ],
                 borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
+                    '#FFFFFFFF',
+                    '#FFFFFFFF',
+                    '#FFFFFFFF'
                 ],
                 borderWidth: 1,
             }]

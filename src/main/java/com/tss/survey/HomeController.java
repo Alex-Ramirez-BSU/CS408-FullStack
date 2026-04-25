@@ -74,7 +74,6 @@ public class HomeController {
     @GetMapping("/add")
     public String addTrail(Model model){
         model.addAttribute("title", "Add Trail");
-        model.addAttribute("message", "This is where you add trails.");
         model.addAttribute("trail", new Trail());
         return "add";
     }
@@ -109,7 +108,7 @@ public class HomeController {
         }
 
         // Adding Attributes
-        model.addAttribute("title", "Trail Stats");
+        model.addAttribute("title", "Trail Statistics");
         model.addAttribute("totalTrails", totalTrails);
         model.addAttribute("totalDistance", totalDistance);
         model.addAttribute("averageRating", averageRating);
@@ -121,10 +120,4 @@ public class HomeController {
 
         return "stats";
     }
-
-//    @GetMapping("/test")
-//    @ResponseBody
-//    public String test() {
-//        return trailRepository.findAll().toString();
-//    }
 }
