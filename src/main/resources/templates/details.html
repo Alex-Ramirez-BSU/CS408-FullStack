@@ -28,7 +28,7 @@
 <main>
     <div>
         <h1 th:text="${title}"></h1>
-        <!-- List Of Trails -->
+            <!-- Details Of Trail -->
             <div class="card text-center">
                 <div class="card-header">
                     Trail
@@ -57,12 +57,14 @@
                         <span th:each="i : ${#numbers.sequence(1, 5)}"
                               th:text="${i <= trail.rating} ? '★' : '☆'"></span>
                     </p>
+                    <!-- Buttons To Modify Trail -->
                     <a th:href="@{/trails/edit/{id}(id=${trail.id})}" class="btn btn-warning">Edit</a>
                     <form th:action="@{/trails/delete/{id}(id=${trail.id})}" method="post"
                           onsubmit="return confirm('Are you sure you want to delete this trail?');">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
+                <!-- Card Footer -->
                 <div class="card-footer text-muted">
                         <span th:with="daysAgo=${T(java.time.temporal.ChronoUnit).DAYS.between(trail.date, T(java.time.LocalDate).now())}">
                             <span th:if="${daysAgo < 0}">¿¿¿Explored In The Future???</span>
