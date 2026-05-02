@@ -85,3 +85,16 @@ h5 {
     margin-top: 7rem;
   }
 }
+
+/* HTML */
+h2 {
+    color: #EAD7B7;
+}
+
+.h2 {
+    color: #333333;
+}
+
+p {
+    color: navajowhite;
+}
