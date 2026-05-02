@@ -19,4 +19,28 @@ class HomeControllerTest {
         assertEquals("Trail Tracker", model.getAttribute("title"));
         assertEquals("This is the homepage.", model.getAttribute("message"));
     }
+
+    @Test
+    void indexModelHasTitleAndMessage() {
+        HomeController controller = new HomeController();
+        Model model = new ExtendedModelMap();
+
+        controller.index(model);
+
+        assertNotNull(model.getAttribute("title"));
+        assertNotNull(model.getAttribute("message"));
+    }
+
+    @Test
+    void indexTitleMatchesHomepageTheme() {
+        HomeController controller = new HomeController();
+        Model model = new ExtendedModelMap();
+
+        controller.index(model);
+
+        String title = (String) model.getAttribute("title");
+
+        assertNotNull(title);
+        assertTrue(title.contains("Trail"));
+    }
 }
