@@ -10,14 +10,17 @@ import org.springframework.ui.Model;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * Controller for handling page routes and trail-related actions.
+ */
 @Controller
 public class HomeController {
 
-    //Repository Initialized
+    /** Repository used to access Trail data from the database */
     @Autowired
     private TrailRepository trailRepository;
 
+    /** Displays the homepage */
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("title", "Trail Tracker");
@@ -25,6 +28,7 @@ public class HomeController {
         return "index";
     }
 
+    /** Displays all trails and applies optional filters */
     @GetMapping("/trails")
     public String Trails(
             @RequestParam(required = false) String difficulty,
@@ -49,6 +53,7 @@ public class HomeController {
         return "trails";
     }
 
+    /** Displays details for a single trail by ID */
     @GetMapping("/trails/{id}")
     public String Trail(@PathVariable("id") int id, Model model){
         Trail trail = trailRepository.findById(id).orElse(null);
@@ -57,6 +62,7 @@ public class HomeController {
         return "details";
     }
 
+    /** Loads an existing trail into the add/edit form */
     @GetMapping("/trails/edit/{id}")
     public String editTrail(@PathVariable("id") int id, Model model){
         Trail trail = trailRepository.findById(id).orElse(null);
@@ -65,12 +71,14 @@ public class HomeController {
         return "add";
     }
 
+    /** Deletes a trail by ID and redirects back to the trail list */
     @PostMapping("/trails/delete/{id}")
     public String deleteTrail(@PathVariable("id") int id) {
         trailRepository.deleteById(id);
         return "redirect:/trails";
     }
 
+    /** Displays a blank form for adding a new trail */
     @GetMapping("/add")
     public String addTrail(Model model){
         model.addAttribute("title", "Add Trail");
@@ -78,12 +86,14 @@ public class HomeController {
         return "add";
     }
 
+    /** Saves a new or edited trail */
     @PostMapping("/add-trail")
     public String addTrail(@ModelAttribute Trail trail){
         trailRepository.save(trail);
         return "redirect:/trails";
     }
 
+    /** Calculates and displays trail statistics */
     @GetMapping("/stats")
     public String stats(Model model){
         // Loading Repo
