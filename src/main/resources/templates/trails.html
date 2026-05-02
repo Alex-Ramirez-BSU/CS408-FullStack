@@ -114,6 +114,7 @@
 
                     <div class="card-footer text-muted">
                         <span th:with="daysAgo=${T(java.time.temporal.ChronoUnit).DAYS.between(trail.date, T(java.time.LocalDate).now())}">
+                            <span th:if="${daysAgo < 0}">¿¿¿Explored In The Future???</span>
                             <span th:if="${daysAgo == 0}">Explored today</span>
                             <span th:if="${daysAgo == 1}">Explored yesterday</span>
                             <span th:if="${daysAgo > 1}" th:text="'Explored ' + ${daysAgo} + ' days ago'"></span>
